@@ -1,0 +1,47 @@
+{{ define "header" }}
+<div>
+    <cabecera>Cabecera</cabecera>
+</div>
+{{end}}
+
+
+{{ define "cuerpo" }}
+<table>
+    {{ range $Row :=.Tablero.Recuadros }}
+        <tr>
+            {{range $Element := $Row}}
+                {{if( $Element.Vivo )}}
+                    <td class="alive" hx-post="/kill/{{$Element.PosX}}/{{$Element.PosY}}" hx-target="body">
+                {{else}}
+                    <td class="dead"  hx-post="/alive/{{$Element.PosX}}/{{$Element.PosY}}" hx-target="body">
+                {{end}}
+                </td>
+            {{end}}
+        </tr>
+        {{end}}
+</table>    
+{{end}}
+
+
+{{ define "controles" }}
+<controles>Controles</controles>
+<div class="control-panel">
+    {{if .Run}}
+        
+        <div
+        hx-post="/advance"
+        hx-trigger="every 500ms"
+        hx-target="body"><button hx-put="/start" hx-target="body">Stop</button></div>
+    {{else}}
+        <div><button hx-put="/start" hx-target="body">Start</button></div>
+    {{end}}
+    <div><button hx-post="/advance" hx-target="body">Next</button></div>
+    <div><button hx-post="/reset" hx-target="body">Reset</button></div>
+</div>
+{{end}}
+
+{{ define "footer" }}
+<div>
+    <pie>Pie</pie>
+</div>
+{{end}}

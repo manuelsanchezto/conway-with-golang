@@ -1,0 +1,23 @@
+table{
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+table td{
+    width: 20px;
+    height: 20px;
+    border: 1px solid black;
+}
+
+.alive{
+    background-color: green;
+}
+
+
+.dead{
+    background-color: red;
+}
+
+.control-panel{
+    display: flex;
+}
