@@ -1,0 +1,1 @@
+A basic web application that renders a basic conway game of life using just HTMX and GO. Project started as a test to create a basic tool to compare the performance of the usage of plain htmx and go vs javascript when multiple calls will be done in a short time span
